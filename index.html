@@ -431,7 +431,212 @@ background:white;
         </div>
 
     </section>
+<!-- ========================================= -->
+<!-- STATS SECTION -->
+<!-- ========================================= -->
 
+<section class="stats">
+
+    <div class="container stats-grid">
+
+        <div class="stat">
+            <h2 class="counter" data-target="50">0</h2>
+            <p>Projects</p>
+        </div>
+
+        <div class="stat">
+            <h2 class="counter" data-target="120">0</h2>
+            <p>Clients</p>
+        </div>
+
+        <div class="stat">
+            <h2 class="counter" data-target="5">0</h2>
+            <p>Services</p>
+        </div>
+
+        <div class="stat">
+            <h2 class="counter" data-target="100">0</h2>
+            <p>Satisfaction %</p>
+        </div>
+
+    </div>
+
+</section>
+
+Le sam. 27 juin 2026, 22:47, melinatutor <melinatutor9@gmail.com> a écrit :
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Melina Studio</title>
+
+<meta name="description"
+content="Professional Portfolio of Melina Studio">
+
+<meta name="keywords"
+content="Education, Voice Over, Video Editing, AI Design">
+
+<link rel="preconnect"
+href="https://fonts.googleapis.com">
+
+<link rel="preconnect"
+href="https://fonts.gstatic.com"
+crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap"
+rel="stylesheet">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+scroll-behavior:smooth;
+}
+
+body{
+
+font-family:'Poppins',sans-serif;
+
+background:#f5f7fb;
+
+color:#222;
+
+}
+
+header{
+
+background:linear-gradient(135deg,#0b3d91,#2563eb);
+
+padding:20px 8%;
+
+display:flex;
+
+justify-content:space-between;
+
+align-items:center;
+
+position:sticky;
+
+top:0;
+
+z-index:999;
+
+}
+
+.logo{
+
+font-size:30px;
+
+font-weight:700;
+
+color:white;
+
+}
+
+nav ul{
+
+display:flex;
+
+list-style:none;
+
+gap:30px;
+
+}
+
+nav a{
+
+text-decoration:none;
+
+color:white;
+
+font-weight:500;
+
+transition:.3s;
+
+}
+
+nav a:hover{
+
+color:#FFD54F;
+
+}
+
+.hero{
+
+min-height:90vh;
+
+display:flex;
+
+flex-direction:column;
+
+justify-content:center;
+
+align-items:center;
+
+text-align:center;
+
+background:linear-gradient(135deg,#0b3d91,#2563eb);
+
+color:white;
+
+padding:20px;
+
+}
+
+.hero h1{
+
+font-size:64px;
+
+margin-bottom:20px;
+
+}
+
+.hero p{
+
+font-size:24px;
+
+max-width:800px;
+
+margin-bottom:40px;
+
+}
+
+.btn{
+
+display:inline-block;
+
+padding:15px 35px;
+
+background:#FFD54F;
+
+color:#222;
+
+text-decoration:none;
+
+border-radius:40px;
+
+font-weight:bold;
+
+margin:10px;
+
+transition:.3s;
+
+}
+
+.btn:hover{
+
+transform:translateY(-4px);
+
+background:white;
+
+} 
 
     <!-- ========================================= -->
     <!-- SERVICES SECTION -->
@@ -2356,3 +2561,496 @@ transform:translateY(-4px);
 background:white;
 
 } 
+    /* ===============================
+   COUNTER ANIMATION (PRO EFFECT)
+=============================== */
+
+const counters = document.querySelectorAll(".counter");
+
+const startCounters = () => {
+    counters.forEach(counter => {
+        counter.innerText = "0";
+
+        const updateCounter = () => {
+            const target = +counter.getAttribute("data-target");
+            const current = +counter.innerText;
+
+            const increment = target / 100;
+
+            if (current < target) {
+                counter.innerText = Math.ceil(current + increment);
+                setTimeout(updateCounter, 20);
+            } else {
+                counter.innerText = target;
+            }
+        };
+
+        updateCounter();
+    });
+};
+
+/* Trigger when section is visible */
+const statsSection = document.querySelector(".stats");
+
+const statsObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            startCounters();
+        }
+    });
+}, {
+    threshold: 0.5
+});
+
+if (statsSection) {
+    statsObserver.observe(statsSection);
+}
+
+
+/* ===============================
+   SCROLL REVEAL (SMOOTH UX UPGRADE)
+=============================== */
+
+const revealElements = document.querySelectorAll(
+    "section, .service-card, .box, .testimonial, .portfolio-box, .stat"
+);
+
+const revealObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.style.opacity = 1;
+            entry.target.style.transform = "translateY(0)";
+            entry.target.style.transition = "0.8s ease";
+        }
+    });
+}, {
+    threshold: 0.1
+});
+
+revealElements.forEach(el => {
+    el.style.opacity = 0;
+    el.style.transform = "translateY(40px)";
+    revealObserver.observe(el);
+});
+
+Le sam. 27 juin 2026, 22:47, melinatutor <melinatutor9@gmail.com> a écrit :
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Melina Studio</title>
+
+<meta name="description"
+content="Professional Portfolio of Melina Studio">
+
+<meta name="keywords"
+content="Education, Voice Over, Video Editing, AI Design">
+
+<link rel="preconnect"
+href="https://fonts.googleapis.com">
+
+<link rel="preconnect"
+href="https://fonts.gstatic.com"
+crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap"
+rel="stylesheet">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+scroll-behavior:smooth;
+}
+
+body{
+
+font-family:'Poppins',sans-serif;
+
+background:#f5f7fb;
+
+color:#222;
+
+}
+
+header{
+
+background:linear-gradient(135deg,#0b3d91,#2563eb);
+
+padding:20px 8%;
+
+display:flex;
+
+justify-content:space-between;
+
+align-items:center;
+
+position:sticky;
+
+top:0;
+
+z-index:999;
+
+}
+
+.logo{
+
+font-size:30px;
+
+font-weight:700;
+
+color:white;
+
+}
+
+nav ul{
+
+display:flex;
+
+list-style:none;
+
+gap:30px;
+
+}
+
+nav a{
+
+text-decoration:none;
+
+color:white;
+
+font-weight:500;
+
+transition:.3s;
+
+}
+
+nav a:hover{
+
+color:#FFD54F;
+
+}
+
+.hero{
+
+min-height:90vh;
+
+display:flex;
+
+flex-direction:column;
+
+justify-content:center;
+
+align-items:center;
+
+text-align:center;
+
+background:linear-gradient(135deg,#0b3d91,#2563eb);
+
+color:white;
+
+padding:20px;
+
+}
+
+.hero h1{
+
+font-size:64px;
+
+margin-bottom:20px;
+
+}
+
+.hero p{
+
+font-size:24px;
+
+max-width:800px;
+
+margin-bottom:40px;
+
+}
+
+.btn{
+
+display:inline-block;
+
+padding:15px 35px;
+
+background:#FFD54F;
+
+color:#222;
+
+text-decoration:none;
+
+border-radius:40px;
+
+font-weight:bold;
+
+margin:10px;
+
+transition:.3s;
+
+}
+
+.btn:hover{
+
+transform:translateY(-4px);
+
+background:white;
+
+} 
+/* ===============================
+   COUNTER ANIMATION (PRO EFFECT)
+=============================== */
+
+const counters = document.querySelectorAll(".counter");
+
+const startCounters = () => {
+    counters.forEach(counter => {
+        counter.innerText = "0";
+
+        const updateCounter = () => {
+            const target = +counter.getAttribute("data-target");
+            const current = +counter.innerText;
+
+            const increment = target / 100;
+
+            if (current < target) {
+                counter.innerText = Math.ceil(current + increment);
+                setTimeout(updateCounter, 20);
+            } else {
+                counter.innerText = target;
+            }
+        };
+
+        updateCounter();
+    });
+};
+
+/* Trigger when section is visible */
+const statsSection = document.querySelector(".stats");
+
+const statsObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            startCounters();
+        }
+    });
+}, {
+    threshold: 0.5
+});
+
+if (statsSection) {
+    statsObserver.observe(statsSection);
+}
+
+
+/* ===============================
+   SCROLL REVEAL (SMOOTH UX UPGRADE)
+=============================== */
+
+const revealElements = document.querySelectorAll(
+    "section, .service-card, .box, .testimonial, .portfolio-box, .stat"
+);
+
+const revealObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.style.opacity = 1;
+            entry.target.style.transform = "translateY(0)";
+            entry.target.style.transition = "0.8s ease";
+        }
+    });
+}, {
+    threshold: 0.1
+});
+
+revealElements.forEach(el => {
+    el.style.opacity = 0;
+    el.style.transform = "translateY(40px)";
+    revealObserver.observe(el);
+});
+
+Le sam. 27 juin 2026, 22:47, melinatutor <melinatutor9@gmail.com> a écrit :
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Melina Studio</title>
+
+<meta name="description"
+content="Professional Portfolio of Melina Studio">
+
+<meta name="keywords"
+content="Education, Voice Over, Video Editing, AI Design">
+
+<link rel="preconnect"
+href="https://fonts.googleapis.com">
+
+<link rel="preconnect"
+href="https://fonts.gstatic.com"
+crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap"
+rel="stylesheet">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+scroll-behavior:smooth;
+}
+
+body{
+
+font-family:'Poppins',sans-serif;
+
+background:#f5f7fb;
+
+color:#222;
+
+}
+
+header{
+
+background:linear-gradient(135deg,#0b3d91,#2563eb);
+
+padding:20px 8%;
+
+display:flex;
+
+justify-content:space-between;
+
+align-items:center;
+
+position:sticky;
+
+top:0;
+
+z-index:999;
+
+}
+
+.logo{
+
+font-size:30px;
+
+font-weight:700;
+
+color:white;
+
+}
+
+nav ul{
+
+display:flex;
+
+list-style:none;
+
+gap:30px;
+
+}
+
+nav a{
+
+text-decoration:none;
+
+color:white;
+
+font-weight:500;
+
+transition:.3s;
+
+}
+
+nav a:hover{
+
+color:#FFD54F;
+
+}
+
+.hero{
+
+min-height:90vh;
+
+display:flex;
+
+flex-direction:column;
+
+justify-content:center;
+
+align-items:center;
+
+text-align:center;
+
+background:linear-gradient(135deg,#0b3d91,#2563eb);
+
+color:white;
+
+padding:20px;
+
+}
+
+.hero h1{
+
+font-size:64px;
+
+margin-bottom:20px;
+
+}
+
+.hero p{
+
+font-size:24px;
+
+max-width:800px;
+
+margin-bottom:40px;
+
+}
+
+.btn{
+
+display:inline-block;
+
+padding:15px 35px;
+
+background:#FFD54F;
+
+color:#222;
+
+text-decoration:none;
+
+border-radius:40px;
+
+font-weight:bold;
+
+margin:10px;
+
+transition:.3s;
+
+}
+
+.btn:hover{
+
+transform:translateY(-4px);
+
+background:white;
+
+} 
+
